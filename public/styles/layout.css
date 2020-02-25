@@ -30,8 +30,6 @@ main {
   margin: auto;
   padding-top: 500px;
   width: 90%;
-  position: relative;
-  z-index: -1;
   background-color: f4f1ec;
 }
 
