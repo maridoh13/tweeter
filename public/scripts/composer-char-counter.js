@@ -1,10 +1,11 @@
 $(document).ready(() => {
 
   $("textarea").keyup(() => {
-    let stringSize = $('textarea')[0].value.length;
-    $('.counter')[0].innerText = 140 - stringSize;
+    const stringSize = $('textarea')[0].value.length;
+    const charactersLeft = 140 - stringSize;
     
-    let charactersLeft = 140 - stringSize;
+    $('.counter')[0].innerText = charactersLeft;
+    
     if (charactersLeft < 0) {
       $('.counter').addClass('fontRed');
     } else {
@@ -13,5 +14,4 @@ $(document).ready(() => {
     
   })
   
-
 })
