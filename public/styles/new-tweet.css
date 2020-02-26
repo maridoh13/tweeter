@@ -17,3 +17,7 @@ textarea {
   font-family: 'Bungee';
   float: right;
 }
+
+.fontRed {
+  color: red;
+}
