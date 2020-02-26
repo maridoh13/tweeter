@@ -1,0 +1,41 @@
+#tweetText {
+  border-bottom: 4px solid black;
+  width: 97%;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+}
+
+article {
+  border: 4px solid black;
+  opacity: 0.7;
+}
+
+
+article:hover {
+  opacity: 1;
+  box-shadow: 10px 10px gray;
+}
+
+article:hover #tweetUsername {
+  opacity: 1
+}
+
+footer {
+  padding: 10px;
+}
+
+#icon {
+  margin: 10px;
+  float: left;
+  text-align: right;
+}
+
+#tweetUsername {
+  position: relative;
+  float: right;
+  margin: 20px;
+  opacity: 0;
+}
