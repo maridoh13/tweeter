@@ -3,6 +3,7 @@ textarea {
   background-color: inherit;
   overflow: hidden;
   border: none;
+  resize: none;
   border-bottom: 4px solid black;
 }
 

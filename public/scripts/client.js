@@ -31,7 +31,7 @@ $(document).ready(() => {
       },
       "created_at": 1461113959088
     }
-  ]
+  ];
 
  
 
@@ -45,7 +45,7 @@ $(document).ready(() => {
       $('#tweets-container').append(value);
     }
     
-  }
+  };
   
 
   const createTweetElement = function(tweet) {
@@ -60,11 +60,51 @@ $(document).ready(() => {
     </article>
     `
     return $tweet;
-  }
-  
-  renderTweets(data);
 
+  };
 
   
+  const loadTweets = () => {
+    event.preventDefault();
+
+    $.ajax('/tweets', { method: 'GET' })
+    .then((data) => {
+      renderTweets(data);
+    })
+
+  };
+  
+
+ 
+
+  const $form = $('form');
+
+  $form.on('submit', function (event) {
+    event.preventDefault();
+
+    const newTweet =  {
+      "user": {
+        "name": "Someone Else",
+        "avatars": "https://i.imgur.com/nlhLi3I.png",
+        "handle": "@SE" },
+      "content": {
+        "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      },
+      "created_at": new Date()
+    }
+    
+    $.ajax('/tweets', { method: 'POST', data: $form.serialize()})
+    .then(() => {
+      data.push(newTweet);
+    });
+    
+    loadTweets();
+    
+  });
+
+  
+
+
+
 
 })
