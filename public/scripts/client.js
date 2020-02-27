@@ -3,53 +3,29 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
 */
-// var moment = require('moment');
 
 
 $(document).ready(() => {
 
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ];
+  const data = [];
 
- 
-
-    
   const renderTweets = function(tweets) {
-    // loops through tweets
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
+    // renders all tweets from DB
     for (let tweet of tweets) {
       let value = createTweetElement(tweet);
       $('#tweets-container').prepend(value);
     }
     
   };
+
+  const renderTweet = function(tweet) {
+    let value = createTweetElement(tweet);
+    $('#tweets-container').prepend(value);
+    
+  };
   
 
   const createTweetElement = function(tweet) {
-    // let $tweet = $('<article>').addClass('tweet');
     const $tweet = `
     <article class="tweetBox">
     <img id="icon" src="${tweet.user.avatars}" alt="avatar icon"></img>
@@ -59,24 +35,22 @@ $(document).ready(() => {
     <footer id="timeStamp">${moment(tweet['created_at']).fromNow()}</footer>
     </article>
     `
-
     return $tweet;
 
   };
 
-  
   const loadTweets = () => {
-    event.preventDefault();
-
     $.ajax('/tweets', { method: 'GET' })
-    .then((data) => {
-      renderTweets(data);
+    .then((db) => {
+      console.log('in the db', db)
+      renderTweets(db);
     })
 
   };
+
+  loadTweets();
   
 
-  
 
   const $form = $('form');
 
@@ -111,15 +85,26 @@ $(document).ready(() => {
         alert('Error - ' + errorMessage + '. Please enter text.')
       })
       
-      loadTweets();
     }
+
+    const loadTweet = () => {
+      // event.preventDefault();
+      $.ajax('/tweets', { method: 'GET' })
+      .then((db) => {
+        renderTweet(db[db.length - 1]);
+      })
   
-  
+    };
+
+    loadTweet();
+    
   });
-
+  
   
 
-
-
-
+  
 })
+
+
+
+
