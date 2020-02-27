@@ -65,6 +65,7 @@ $(document).ready(() => {
 
   loadTweets();
   
+  // Submitting the tweets   //
 
   const $form = $('form');
 
@@ -92,10 +93,8 @@ $(document).ready(() => {
       .then(() => {
         loadTweet();
       })
-
-      // success: function() { loadTweets(); }
-
-
+      // $('textarea')[0].value = ""
+      
       // .catch((xhr, status, error) => {
       //   var errorMessage = xhr.status + ': ' + xhr.statusText;
       //   alert('Error - ' + errorMessage + '. Please enter text.')

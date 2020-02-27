@@ -1,4 +1,4 @@
-/* mobile */
+/* Mobile version */
 
 @media screen and (max-width: 400px) {
   nav {
@@ -15,7 +15,7 @@
 
 
 
-/* desktop */
+/* Desktop version */
 
 @media screen and (min-width: 1024px) {
   nav { 
@@ -30,15 +30,12 @@
   }
 
   header {
-    width: 30%;
-    margin-top: 120px;
+    width: 40%;
   }
 
   .container {
     width: 50%;
     margin: 0;
-    margin-top: 120px;
-
   }
 
 

@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="/styles/tweets.css" type="text/css" />
     <link rel="stylesheet" href="/styles/responsiveDesign.css" type="text/css" />
 
-
-
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
@@ -48,32 +46,32 @@
     </nav>
 
     <section id="media">
-    <header>
-      <div>
-        <img src="/images/profile-hex.png" alt="avatar"> 
-      </div>
-      <br>
-      <div>
-        <h2 id="username">Mari Dominguez</h2>
-      </div>
-    </header>
-  
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <div id="errorMsg"></div>
-        <h2>Compose Tweet</h2>
-        <form Content-Type="application/x-www-form-urlencoded" action="/tweets" method="POST">
-          <textarea name="text" input="text" placeholder="What are you humming about?"></textarea>
-          <input class="button" type="submit" value="Tweet">
-          <span class="counter">140</span>
-        </form>
-      </section>
-    </br>
-    </br>
-      <section id="tweets-container">
-      </section>
-    </main>
+      <header>
+        <div>
+          <img src="/images/profile-hex.png" alt="avatar"> 
+        </div>
+        <br>
+        <div>
+          <h2 id="username">Mari Dominguez</h2>
+        </div>
+      </header>
+    
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <section class="new-tweet">
+          <div id="errorMsg"></div>
+          <h2>Compose Tweet</h2>
+          <form Content-Type="application/x-www-form-urlencoded" action="/tweets" method="POST">
+            <textarea name="text" input="text" placeholder="What are you humming about?"></textarea>
+            <input class="button" type="submit" value="Tweet">
+            <span class="counter">140</span>
+          </form>
+          </br>
+          </br>
+        </section>
+        <section id="tweets-container">
+        </section>
+      </main>
     </section>  
   </body>
 </html>
