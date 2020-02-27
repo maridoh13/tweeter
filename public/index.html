@@ -19,10 +19,12 @@
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script src="/scripts/composer-char-counter.js"></script>
+    <script src="/scripts/toggle.js"></script>
     <!-- <script src="/scripts/hoverTweet.js"></script> -->
 
 
@@ -31,9 +33,17 @@
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
-      <span>My Tweeter! Write a new tweet</span>
+      <span>My Tweeter!</span>
+      <div class="txt">
+        <b>Write</b> a new tweet <br>
+        <span class="composeButton">
+          <div class="scr">
+            <i class="fas fa-angle-double-down" id="toggles"></i>
+          </div>
+        </span>
+      </div>
     </nav>
-
+    
     <header>
       <div>
         <img src="/images/profile-hex.png" alt="avatar"> 

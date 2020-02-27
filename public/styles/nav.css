@@ -1,5 +1,7 @@
 nav {
   position: fixed;
+  display: flex;
+  justify-content: space-between;
   height: 120px;
   width: 100%;
   z-index: 1;
@@ -7,4 +9,20 @@ nav {
   color: #FFFFFF ;
   font-family: 'Bungee';
   padding: 1.5em
+}
+
+#toggles:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.composeButton {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.scr {
+  display: flex;
+  align-items: center;
 }

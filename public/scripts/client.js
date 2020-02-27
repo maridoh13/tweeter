@@ -7,6 +7,13 @@
 
 $(document).ready(() => {
 
+  // function to avoid 'hacking' using <script> as part of text
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
   const data = [];
 
   const renderTweets = function(tweets) {
@@ -31,7 +38,7 @@ $(document).ready(() => {
     <img id="icon" src="${tweet.user.avatars}" alt="avatar icon"></img>
     <p id="nameOfUser">${tweet.user.name}</p>
     <p id="tweetUsername">${tweet.user.handle}</p>
-    <p id="tweetText">${tweet.content.text}</p>
+    <p id="tweetText">${escape(tweet.content.text)}</p>
     <footer id="timeStamp">${moment(tweet['created_at']).fromNow()}</footer>
     </article>
     `
@@ -39,10 +46,18 @@ $(document).ready(() => {
 
   };
 
+  const loadTweet = () => {
+    // event.preventDefault();
+    $.ajax('/tweets', { method: 'GET' })
+    .then((db) => {
+      renderTweet(db[db.length - 1]);
+    })
+
+  };
+
   const loadTweets = () => {
     $.ajax('/tweets', { method: 'GET' })
     .then((db) => {
-      console.log('in the db', db)
       renderTweets(db);
     })
 
@@ -71,7 +86,7 @@ $(document).ready(() => {
           "avatars": "https://i.imgur.com/nlhLi3I.png",
           "handle": "@SE" },
         "content": {
-          "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "text": "aaaaa",
         },
         "created_at": new Date()
       }
@@ -80,6 +95,9 @@ $(document).ready(() => {
       .then(() => {
         data.push(newTweet);
       })
+      .then(() => {
+        loadTweet();
+      })
       .catch((xhr, status, error) => {
         var errorMessage = xhr.status + ': ' + xhr.statusText;
         alert('Error - ' + errorMessage + '. Please enter text.')
@@ -87,16 +105,6 @@ $(document).ready(() => {
       
     }
 
-    const loadTweet = () => {
-      // event.preventDefault();
-      $.ajax('/tweets', { method: 'GET' })
-      .then((db) => {
-        renderTweet(db[db.length - 1]);
-      })
-  
-    };
-
-    loadTweet();
     
   });
   
