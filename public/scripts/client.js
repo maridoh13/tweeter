@@ -66,42 +66,40 @@ $(document).ready(() => {
   loadTweets();
   
 
-
   const $form = $('form');
 
   $form.on('submit', function (event) {
+    $("#errorMsg").slideUp(300);
     event.preventDefault();
-    let text = $form.serialize();
-    let size = text.length - 5;
+    let dataSer = $(this).serialize(); 
+    let size = dataSer.length - 5;
     
     if (size > 140) {
-      alert('Please reduce number of characters. Limit of 140.');
-      return;
-
-    } else {
-
-      const newTweet =  {
-        "user": {
-          "name": "Someone Else",
-          "avatars": "https://i.imgur.com/nlhLi3I.png",
-          "handle": "@SE" },
-        "content": {
-          "text": "aaaaa",
-        },
-        "created_at": new Date()
-      }
-      
-      $.ajax('/tweets', { method: 'POST', data: $form.serialize()})
+      $('#errorMsg')
+        .text( "DANGER ZONE: message too long." )
+        .slideDown(300)
+    } 
+    else if (size < 1 || size === null) {
+      $('#errorMsg')
+        .text( "DANGER ZONE: please enter some text." )
+        .slideDown(300)
+    } 
+    else {
+      $.ajax('/tweets', { method: 'POST', data: dataSer})
       .then(() => {
-        data.push(newTweet);
+        data.push(dataSer);
       })
       .then(() => {
         loadTweet();
       })
-      .catch((xhr, status, error) => {
-        var errorMessage = xhr.status + ': ' + xhr.statusText;
-        alert('Error - ' + errorMessage + '. Please enter text.')
-      })
+
+      // success: function() { loadTweets(); }
+
+
+      // .catch((xhr, status, error) => {
+      //   var errorMessage = xhr.status + ': ' + xhr.statusText;
+      //   alert('Error - ' + errorMessage + '. Please enter text.')
+      // })
       
     }
 
