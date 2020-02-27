@@ -42,7 +42,7 @@ $(document).ready(() => {
     // takes return value and appends it to the tweets container
     for (let tweet of tweets) {
       let value = createTweetElement(tweet);
-      $('#tweets-container').append(value);
+      $('#tweets-container').prepend(value);
     }
     
   };
@@ -59,6 +59,7 @@ $(document).ready(() => {
     <footer id="timeStamp">${moment(tweet['created_at']).fromNow()}</footer>
     </article>
     `
+
     return $tweet;
 
   };
@@ -75,31 +76,45 @@ $(document).ready(() => {
   };
   
 
- 
+  
 
   const $form = $('form');
 
   $form.on('submit', function (event) {
     event.preventDefault();
+    let text = $form.serialize();
+    let size = text.length - 5;
+    
+    if (size > 140) {
+      alert('Please reduce number of characters. Limit of 140.');
+      return;
 
-    const newTweet =  {
-      "user": {
-        "name": "Someone Else",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@SE" },
-      "content": {
-        "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      },
-      "created_at": new Date()
+    } else {
+
+      const newTweet =  {
+        "user": {
+          "name": "Someone Else",
+          "avatars": "https://i.imgur.com/nlhLi3I.png",
+          "handle": "@SE" },
+        "content": {
+          "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        },
+        "created_at": new Date()
+      }
+      
+      $.ajax('/tweets', { method: 'POST', data: $form.serialize()})
+      .then(() => {
+        data.push(newTweet);
+      })
+      .catch((xhr, status, error) => {
+        var errorMessage = xhr.status + ': ' + xhr.statusText;
+        alert('Error - ' + errorMessage + '. Please enter text.')
+      })
+      
+      loadTweets();
     }
-    
-    $.ajax('/tweets', { method: 'POST', data: $form.serialize()})
-    .then(() => {
-      data.push(newTweet);
-    });
-    
-    loadTweets();
-    
+  
+  
   });
 
   
