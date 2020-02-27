@@ -1,0 +1,46 @@
+/* mobile */
+
+@media screen and (max-width: 400px) {
+  nav {
+    background-color: red;
+    margin-top: 0;
+    font-size: 90%;
+  }
+
+  #create {
+    display: none;
+  }
+
+}
+
+
+
+/* desktop */
+
+@media screen and (min-width: 1024px) {
+  nav { 
+    background-color: green;
+  }
+
+  #media {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5%
+  }
+
+  header {
+    width: 30%;
+    margin-top: 120px;
+  }
+
+  .container {
+    width: 50%;
+    margin: 0;
+    margin-top: 120px;
+
+  }
+
+
+
+}

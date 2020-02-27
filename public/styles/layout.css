@@ -27,9 +27,8 @@ body {
 */
 
 main {
-  margin: auto;
-  padding-top: 500px;
-  width: 90%;
-  background-color: f4f1ec;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
