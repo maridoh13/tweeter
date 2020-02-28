@@ -21,7 +21,7 @@ article:hover {
   box-shadow: 10px 5px 5px gray;
 }
 
-article:hover #tweetUsername {
+article:hover #tweetUsername, article:hover  #icons {
   opacity: 1
 }
 
@@ -41,3 +41,10 @@ footer {
   margin: 20px;
   opacity: 0;
 }
+
+#icons {
+  opacity: 0;
+  float: right;
+}
+
+

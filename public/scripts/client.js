@@ -40,6 +40,11 @@ $(document).ready(() => {
     <p id="tweetUsername">${tweet.user.handle}</p>
     <p id="tweetText">${escape(tweet.content.text)}</p>
     <footer id="timeStamp">${moment(tweet['created_at']).fromNow()}</footer>
+    <div id="icons">
+    <i class="fa fa-flag"></i>
+    <i class="fa fa-retweet"></i>
+    <i class="fa fa-heart"></i>
+    </div>
     </article>
     `
     return $tweet;
@@ -89,24 +94,16 @@ $(document).ready(() => {
       $.ajax('/tweets', { method: 'POST', data: dataSer})
       .then(() => {
         data.push(dataSer);
+        $('textarea')[0].value = ""
+        $('.counter')[0].innerHTML = 140;
       })
       .then(() => {
         loadTweet();
       })
-      // $('textarea')[0].value = ""
-      
-      // .catch((xhr, status, error) => {
-      //   var errorMessage = xhr.status + ': ' + xhr.statusText;
-      //   alert('Error - ' + errorMessage + '. Please enter text.')
-      // })
       
     }
-
     
   });
-  
-  
-
   
 })
 
