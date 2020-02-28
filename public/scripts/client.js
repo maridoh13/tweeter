@@ -63,12 +63,12 @@ $(document).ready(() => {
       </header>
       <p id="tweetText">${escape(tweet.content.text)}</p>
       <footer id="timeStamp">
-      <div>${moment(tweet['created_at']).fromNow()}</div>
-      <div id="icons">
-      <i class="fa fa-flag"></i>
-      <i class="fa fa-retweet"></i>
-      <i class="fa fa-heart"></i>
-      </div>
+        <div>${moment(tweet['created_at']).fromNow()}</div>
+        <div id="icons">
+        <i class="fa fa-flag"></i>
+        <i class="fa fa-retweet"></i>
+        <i class="fa fa-heart"></i>
+        </div>
       </footer>
     </article>
     `

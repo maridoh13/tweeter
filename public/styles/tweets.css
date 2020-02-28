@@ -39,10 +39,13 @@ footer {
 }
 
 #tweetUsername {
-  position: relative;
-  float: right;
   margin: 20px;
   opacity: 1;
+}
+
+#nameOfUser {
+  float: right;
+  margin: 20px;
 }
 
 #icons {
@@ -52,6 +55,7 @@ footer {
 
 #headerTweet {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
