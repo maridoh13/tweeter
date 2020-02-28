@@ -33,18 +33,43 @@ $(document).ready(() => {
   
 
   const createTweetElement = function(tweet) {
+    // const $tweet = `
+    // <article class="tweetBox">
+    // <img id="icon" src="${tweet.user.avatars}" alt="avatar icon"></img>
+    // <p id="nameOfUser">${tweet.user.name}</p>
+    // <div id="tweetUsername">
+    // <span>${tweet.user.handle}</span>
+    // </div>
+    // <p id="tweetText">${escape(tweet.content.text)}</p>
+    // <footer id="timeStamp">${moment(tweet['created_at']).fromNow()}</footer>
+    // <div id="icons">
+    // <i class="fa fa-flag"></i>
+    // <i class="fa fa-retweet"></i>
+    // <i class="fa fa-heart"></i>
+    // </div>
+    // </article>
+    // `
+
     const $tweet = `
     <article class="tweetBox">
-    <img id="icon" src="${tweet.user.avatars}" alt="avatar icon"></img>
-    <p id="nameOfUser">${tweet.user.name}</p>
-    <p id="tweetUsername">${tweet.user.handle}</p>
-    <p id="tweetText">${escape(tweet.content.text)}</p>
-    <footer id="timeStamp">${moment(tweet['created_at']).fromNow()}</footer>
-    <div id="icons">
-    <i class="fa fa-flag"></i>
-    <i class="fa fa-retweet"></i>
-    <i class="fa fa-heart"></i>
-    </div>
+      <header id="headerTweet">
+        <div class="userInfo">
+          <img id="icon" src="${tweet.user.avatars}" alt="avatar icon"></img>
+          <div id="nameOfUser">${tweet.user.name}</div>
+        </div>
+        <div>
+        <p id="tweetUsername">${tweet.user.handle}</p>
+        </div>
+      </header>
+      <p id="tweetText">${escape(tweet.content.text)}</p>
+      <footer id="timeStamp">
+      <div>${moment(tweet['created_at']).fromNow()}</div>
+      <div id="icons">
+      <i class="fa fa-flag"></i>
+      <i class="fa fa-retweet"></i>
+      <i class="fa fa-heart"></i>
+      </div>
+      </footer>
     </article>
     `
     return $tweet;
@@ -52,7 +77,6 @@ $(document).ready(() => {
   };
 
   const loadTweet = () => {
-    // event.preventDefault();
     $.ajax('/tweets', { method: 'GET' })
     .then((db) => {
       renderTweet(db[db.length - 1]);
